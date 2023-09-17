@@ -5,6 +5,7 @@ public class DraggableItem: MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
     {
         [HideInInspector] public Transform _parenAfterDrag;
         [SerializeField] private Image _image;
+        [SerializeField] private Item _item;
         
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -24,5 +25,10 @@ public class DraggableItem: MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
             Debug.Log("End Drag");
             transform.SetParent(_parenAfterDrag);
             _image.raycastTarget = true;
+
+            int a = _item.Cost;
+            int b = a / 2;
+            _item.Cost = b;
+            _item.SetCostLable();
         }
     }

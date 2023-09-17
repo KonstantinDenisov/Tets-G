@@ -15,6 +15,11 @@ public class Item : MonoBehaviour
         _label.text = Convert.ToString(_cost);
     }
 
+    public void SetCostLable()
+    {
+        _label.text = Convert.ToString(_cost);
+    }
+
     public int Cost
     {
         get => _cost;
