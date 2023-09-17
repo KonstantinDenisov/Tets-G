@@ -3,17 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IDropHandler
 {
-   [SerializeField] private Item _item;
-   [SerializeField] private string _label;
-   [SerializeField] private int _int;
-   
-
-   private void Start()
+   public void OnDrop(PointerEventData eventData)
    {
-      _int = 10;
-      _label = Convert.ToString(_int);
+      if (transform.childCount != 0)
+         return;
+      GameObject dropped = eventData.pointerDrag;
+      DraggableItem draggableItem = dropped.GetComponent<DraggableItem>();
+      draggableItem._parenAfterDrag = transform;
    }
 }
